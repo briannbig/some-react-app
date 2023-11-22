@@ -13,7 +13,7 @@ function NoteApp() {
 
     function saveNote() {
         if (note.title.trim() !== '' && note.body.trim() !== '') {
-            setNotes([...notes, note]);
+            setNotes([note, ...notes]);
             setNote({title : "", body: "", priority: 1, archived: false})
 
         }

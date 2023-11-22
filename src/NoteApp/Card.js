@@ -25,12 +25,12 @@ function Card({ title, body, priority, archived }) {
     const Header = () => {
         switch (note.priority) {
             case 1:
-                return <div className="card-footer text-white bg-primary">{note.priority}</div>
-            case 2:
                 return <div className="card-footer text-white bg-secondary">{note.priority}</div>
+            case 2:
+                return <div className="card-footer text-white bg-dark">{note.priority}</div>
 
             default:
-                return <div className="card-footer text-white bg-dark">{note.priority}</div>
+                return <div className="card-footer text-white bg-primary">{note.priority}</div>
         }
     }
 
