@@ -8,29 +8,25 @@ import NotesData from "./NotesData";
 function NoteApp() {
     const [notes, setNotes] = useState(NotesData())
 
-    const [note, setNote] = useState({ title: "", body: "", priority: 1, archived: false })
+    const [note, setNote] = useState({})
 
 
     function saveNote() {
         if (note.title.trim() !== '' && note.body.trim() !== '') {
             setNotes([note, ...notes]);
-            setNote({title : "", body: "", priority: 1, archived: false})
+            setNote({ title: '', body: '', priority: 0 })
 
         }
 
     }
 
-    const handleNoteTitleInputChange = (event) => {
-        setNote(prevNote => ({ ...prevNote, ['title']: event.target.value }));
-    }
+    const setFormState = ({ target }) => {
+        const { name, value } = target;
+        setNote((prevNote) => ({
+            ...prevNote, [name]: value
+        }));
+    };
 
-    const handleNoteBodyInputChange = (event) => {
-        setNote(prevNote => ({ ...prevNote, ['body']: event.target.value }));
-    }
-
-    const handleNotePriorityInputChange = (event) => {
-        setNote(prevNote => ({ ...prevNote, ['priority']: event.target.value }));
-    }
 
 
     function Notes() {
@@ -53,14 +49,14 @@ function NoteApp() {
 
     return (
         <div className=" pb-2">
-            <NavBar />
+            <NavBar notesCount={notes.length} />
             <div className="row p-4 rounded rounded-lg form-group my-2 mx-5 justify-content-center text-center">
-                
+
 
                 <div className="col-6 justify-content-center">
-                    <input type="text" className="form-control mb-2" value={note.title} onChange={handleNoteTitleInputChange} name="" id="" placeholder="Title" />
-                    <input type="text" className="form-control mb-2" value={note.body} onChange={handleNoteBodyInputChange} name="" id="" placeholder="Body" />
-                    <input type="number" className="form-control mb-2" value={note.priority} onChange={handleNotePriorityInputChange} name="" id="" placeholder="Priority" />
+                    <input type="text" className="form-control mb-2" value={note.title} onChange={setFormState} name="title" id="" placeholder="Title" />
+                    <input type="text" className="form-control mb-2" value={note.body} onChange={setFormState} name="body" id="" placeholder="Body" />
+                    <input type="number" className="form-control mb-2" value={note.priority} onChange={setFormState} name="priority" id="" placeholder="Priority" />
                     <button name="" id="" className="btn btn-primary" onClick={saveNote} >Add Note</button>
                 </div>
             </div>

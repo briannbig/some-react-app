@@ -6,12 +6,8 @@ function Card({ title, body, priority, archived }) {
 
     const [note, setNote] = useState({ title: title, body: body, priority: priority, archived: archived })
 
-    const archiveItem = () => {
-        setNote(prevNote => ({ ...prevNote, archived: true }));
-    }
-
-    const unarchiveItem = () => {
-        setNote(prevNote => ({ ...prevNote, archived: false }));
+    const toggleArchive = () => {
+        setNote(prevNote => ({ ...prevNote, archived: prevNote.archived ? false : true }));
     }
 
     const increasePriority = () => {
@@ -53,7 +49,7 @@ function Card({ title, body, priority, archived }) {
 
                     <div className="col-2 align-self-start " >
                         <button className={`btn btn-sm ${note.archived ? 'btn-secondary' : 'btn-danger'}`}
-                            onClick={note.archived ? unarchiveItem : archiveItem}>
+                            onClick={toggleArchive}>
                             {note.archived ? 'Unarchive' : 'Archive'}
                         </button>
                     </div>

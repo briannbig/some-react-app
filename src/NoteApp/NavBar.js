@@ -1,11 +1,14 @@
 import React from "react";
 
 
-function NavBar(props) {
+function NavBar({notesCount}) {
 
     return (
         <nav className=" bg-dark text-center py-2">
-            <h1 className="text-center text-white"> &#9641; Note App</h1>
+            <ul>
+                <li className="badge badge-success text-white">Total: {notesCount}</li>
+            </ul>
+            <h1 className="text-center text-white"> <span className="text-success">&#9641;</span> Note App</h1>
         </nav>
     );
 
