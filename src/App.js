@@ -5,7 +5,10 @@ function App() {
   return (
 
     <div className="App">
-      <StarRating totalStars={6} />
+      <StarRating
+        style={{ backgroundColor: "lightblue" }}
+        onDoubleClick={e => { alert("Thank you for your feedback") }}
+      />
     </div>
   );
 }
