@@ -1,14 +1,17 @@
 import React from "react";
 import { FaStar } from "react-icons/fa"
 
-export default function StarRating() {
+const Star = ({ selected = false }) => (
+    <FaStar color={selected ? "red" : "grey"} />
+);
+const createArray = length => [...Array(length)];
 
-    return <>
-        <FaStar color="red" />
-        <FaStar color="red" />
-        <FaStar color="red" />
-        <FaStar color="red" />
-        <FaStar color="red" />
-    </>;
+export default function StarRating({ totalStars = 5 }) {
+
+
+    return <div>
+        {createArray(totalStars).map((n, i) => <Star key={i} />)}
+    </div>;
+
 
 }
